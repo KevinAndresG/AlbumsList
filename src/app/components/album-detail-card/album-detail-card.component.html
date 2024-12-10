@@ -1,0 +1,63 @@
+<app-back-button />
+<div class="album-detail-container">
+  <div class="album-header">
+    <img
+      [src]="this.album()?.cover"
+      alt="{{ this.album()?.name }}"
+      class="album-cover"
+    />
+    <div class="album-info">
+      <h1>{{ this.album()?.name }}</h1>
+      <p class="release-date">
+        Fecha de lanzamiento:
+        {{ this.album()?.releaseDate | date : "longDate" }}
+      </p>
+      <p class="genre">Género: {{ this.album()?.genre }}</p>
+      <p class="record-label">Disquera: {{ this.album()?.recordLabel }}</p>
+    </div>
+  </div>
+
+  <div class="album-description">
+    <h2>Descripción</h2>
+    <p>{{ this.album()?.description }}</p>
+  </div>
+
+  <div class="album-tracks">
+    <h2>Pistas</h2>
+    <ol>
+      @for (track of this.album()?.tracks; track $index) {
+      <li>{{ track.name }} - {{ track.duration }}</li>
+      }
+    </ol>
+  </div>
+
+  <div class="album-performers">
+    <h2>Intérpretes</h2>
+    @for (performer of this.album()?.performers; track $index) {
+    <div class="performer">
+      <img
+        [src]="performer.image"
+        alt="{{ performer.name }}"
+        class="performer-image"
+      />
+      <div>
+        <h3>{{ performer.name }}</h3>
+        <p class="birth-date">
+          Fecha de nacimiento: {{ performer.birthDate | date : "longDate" }}
+        </p>
+        <p>{{ performer.description }}</p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="album-comments">
+    <h2>Comentarios</h2>
+    @for (comment of this.album()?.comments; track i; let i = $index) {
+    <div class="comment">
+      <p class="comment-rating">Calificación: {{ comment.rating }} ★</p>
+      <p>{{ comment.description }}</p>
+    </div>
+    }
+  </div>
+</div>

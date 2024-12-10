@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AlbumFormComponent } from '../../components/album-form/album-form.component';
 import { ActivatedRoute } from '@angular/router';
 import { AlbumsService } from '../../infrastructure/services/albums.service';
+import { BackButtonComponent } from '../../components/back-button/back-button.component';
 
 @Component({
   selector: 'app-albums-create',
   standalone: true,
-  imports: [AlbumFormComponent],
+  imports: [AlbumFormComponent, BackButtonComponent],
   templateUrl: './albums-create.component.html',
   styleUrl: './albums-create.component.scss',
 })

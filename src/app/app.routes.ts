@@ -17,13 +17,13 @@ export const routes: Routes = [
         (c) => c.AlbumsCreateComponent
       ),
   },
-  // {
-  //   path: 'album-detail/:id',
-  //   loadComponent: () =>
-  //     import('./pages/album-detail/album-detail.component').then(
-  //       (c) => c.AlbumDetailComponent
-  //     ),
-  // },
+  {
+    path: 'album-detail/:id',
+    loadComponent: () =>
+      import('./pages/album-detail/album-detail.component').then(
+        (c) => c.AlbumDetailComponent
+      ),
+  },
   {
     path: 'edit-album/:id',
     loadComponent: () =>

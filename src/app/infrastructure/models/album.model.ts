@@ -1,8 +1,17 @@
+export interface AlbumRequest {
+  name: string;
+  cover: string;
+  releaseDate: Date;
+  description: string;
+  genre: string;
+  recordLabel: string;
+}
+
 export interface AlbumResponse {
   id: number;
   name: string;
   cover: string;
-  releaseDate: Date;
+  releaseDate: Date | string;
   description: string;
   genre: string;
   recordLabel: string;
@@ -29,13 +38,4 @@ export interface Track {
   id: number;
   name: string;
   duration: string;
-}
-
-export interface AlbumRequest {
-  name: string;
-  cover: string;
-  releaseDate: Date;
-  description: string;
-  genre: string;
-  recordLabel: string;
 }

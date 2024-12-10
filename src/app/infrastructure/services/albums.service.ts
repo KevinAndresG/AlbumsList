@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { AlbumRequest, AlbumResponse } from '../models/album.model';
+import { AlbumCommentRequest } from '../models/album-comment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +34,7 @@ export class AlbumsService {
     return axios.delete(`${this.baseUrl}/albums/${id}`);
   }
 
-  addAlbumComment(id: string, comment: any) {
-    return axios.put(`${this.baseUrl}/albums/${id}/comments`, comment);
+  addAlbumComment(id: number, comment: AlbumCommentRequest) {
+    return axios.post(`${this.baseUrl}/albums/${id}/comments`, comment);
   }
 }

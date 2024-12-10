@@ -1,0 +1,78 @@
+.album-detail-container {
+  width: 1000px;
+  margin: auto;
+  padding-bottom: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.album-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.album-cover {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.album-info {
+  flex: 1;
+}
+
+.album-info h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.album-info p {
+  margin: 0.3rem 0;
+}
+
+.album-description,
+.album-tracks,
+.album-performers,
+.album-comments {
+  margin-bottom: 2rem;
+}
+
+.album-tracks ol {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.album-tracks li {
+  padding: 0.3rem 0;
+}
+
+.performer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.performer-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+}
+
+.comment {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-rating {
+  font-weight: bold;
+  color: #f39c12;
+}

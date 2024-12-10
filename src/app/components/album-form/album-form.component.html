@@ -1,3 +1,86 @@
+@if (this.isEditing() && this.isLoading) {
+<div class="form-container">
+  <div class="album-form">
+    <div class="form-group">
+      <div class="skeleton skeleton-name"></div>
+      <div class="skeleton skeleton-input"></div>
+      @if ( albumForm.get('name')?.invalid && albumForm.get('name')?.touched) {
+      <div class="error">
+        @if (albumForm.get('name')?.hasError('required')) {
+        <p>El nombre es obligatorio.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <div class="skeleton skeleton-url"></div>
+      <div class="skeleton skeleton-input"></div>
+      @if (albumForm.get('cover')?.invalid && albumForm.get('cover')?.touched) {
+      <div class="error">
+        @if (albumForm.get('cover')?.hasError('required')) {
+        <p>La URL de la cubierta es obligatoria.</p>
+        } @if (albumForm.get('cover')?.hasError('pattern')) {
+        <p>La URL de la cubierta es inválida.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <div class="skeleton skeleton-release"></div>
+      <div class="skeleton skeleton-input"></div>
+      @if (albumForm.get('releaseDate')?.invalid &&
+      albumForm.get('releaseDate')?.touched) {
+      <div class="error">
+        @if (albumForm.get('releaseDate')?.hasError('required')) {
+        <p>La fecha de lanzamiento es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <div class="skeleton skeleton-description"></div>
+      <div class="skeleton skeleton-textarea"></div>
+      @if (albumForm.get('description')?.invalid &&
+      albumForm.get('description')?.touched) {
+      <div class="error">
+        @if (albumForm.get('description')?.hasError('required')) {
+        <p>La descripción es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <div class="skeleton skeleton-genre"></div>
+      <div class="skeleton skeleton-input"></div>
+      @if (albumForm.get('genre')?.invalid && albumForm.get('genre')?.touched) {
+      <div class="error">
+        @if (albumForm.get('genre')?.hasError('required')) {
+        <p>El género es obligatorio.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <div class="skeleton skeleton-label"></div>
+      <div class="skeleton skeleton-input"></div>
+      @if (albumForm.get('recordLabel')?.invalid &&
+      albumForm.get('recordLabel')?.touched) {
+      <div class="error">
+        @if (albumForm.get('recordLabel')?.hasError('required')) {
+        <p>La disquera es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="skeleton skeleton-button"></div>
+  </div>
+</div>
+} @else {
 <div class="form-container">
   <form [formGroup]="albumForm" class="album-form" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -107,3 +190,4 @@
     </button>
   </form>
 </div>
+}

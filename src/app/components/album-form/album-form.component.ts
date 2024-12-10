@@ -21,6 +21,7 @@ export class AlbumFormComponent implements OnInit {
   genres = ['Classical', 'Salsa', 'Rock', 'Folk'];
   labels = ['Sony Music', 'Discos Fuentes', 'Elektra', 'Fania Records'];
   isEditing = input<boolean>(false);
+  isLoading = true;
   albumId = input<number | null>(null);
   constructor(
     readonly fb: FormBuilder,
@@ -57,10 +58,23 @@ export class AlbumFormComponent implements OnInit {
   }
 
   loadAlbumData(id: number) {
+    if (!id || id === 0) return;
     this.albumsService.getAlbum(id).then((album: AlbumResponse) => {
       if (album) {
-        this.albumForm.patchValue(album);
+        this.albumForm.patchValue({
+          ...album,
+          releaseDate: this.convertToDateInput(album.releaseDate),
+        });
+        this.isLoading = false;
       }
     });
+  }
+
+  convertToDateInput(value: string | Date): string {
+    const date = new Date(value);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }

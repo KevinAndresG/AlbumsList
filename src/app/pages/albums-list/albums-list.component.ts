@@ -19,6 +19,20 @@ export class AlbumsListComponent implements OnInit {
   itemsPerPage = 8;
   isLoading = true;
   skeletons = Array(8);
+  defaultAlbums: AlbumResponse[] = [
+    {
+      id: 1,
+      name: 'Album 1',
+      cover: '',
+      releaseDate: '',
+      description: '',
+      genre: '',
+      recordLabel: '',
+      tracks: [],
+      performers: [],
+      comments: [],
+    },
+  ];
 
   constructor(readonly albumsService: AlbumsService) {}
 
@@ -35,10 +49,16 @@ export class AlbumsListComponent implements OnInit {
     this.getAlbums();
   }
 
-  getAlbums() {
-    this.albumsService.getAlbums().then((albums: AlbumResponse[]) => {
-      this.albums = albums;
+  async getAlbums(): Promise<void> {
+    try {
+      this.isLoading = true;
+      const albums = await this.albumsService.getAlbums();
+      this.albums = albums.length > 0 ? albums : this.defaultAlbums;
+    } catch (error) {
+      console.error('Error fetching albums:', error);
+      this.albums = [];
+    } finally {
       this.isLoading = false;
-    });
+    }
   }
 }
