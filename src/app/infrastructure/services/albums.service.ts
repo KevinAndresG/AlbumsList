@@ -9,7 +9,7 @@ import { AlbumCommentRequest } from '../models/album-comment.model';
 export class AlbumsService {
   constructor() {}
 
-  baseUrl = 'https://backvynils-q6yc.onrender.com';
+  baseUrl = 'http://149.56.23.23:3000';
 
   async getAlbums(): Promise<AlbumResponse[]> {
     const response = await axios.get(`${this.baseUrl}/albums`);
