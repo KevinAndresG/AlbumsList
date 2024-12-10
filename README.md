@@ -78,3 +78,8 @@ Prueba unitaria: Se debe incluir al menos una prueba unitaria en la aplicación.
 ### Nota Importante
 
 La entidad Coleccionista no forma parte de la prueba, pero se incluye para una mejor comprensión del proyecto.
+
+## VERSIONES DE LAS TECNOLOGIAS ESADAS EN EL PROYECTO:
+
+- #### Node: 18.20
+- #### Angular: 18
