@@ -1,0 +1,109 @@
+@import "../../components/album-card/album-card.component.scss";
+#albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 30px;
+  row-gap: 30px;
+  margin-bottom: 20px;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+}
+
+#create-album-button {
+  z-index: 10;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease, scale 0.1s ease;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 1), 0 2px 5px rgba(0, 0, 0, 0.6);
+    scale: 1.1;
+  }
+}
+.card-skeleton {
+  position: relative;
+  width: 350px;
+  min-height: 383px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+}
+
+.skeleton-title {
+  width: 100%;
+  height: 35px;
+}
+
+.skeleton-release {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  height: 20px;
+}
+
+.skeleton-description {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  height: 20px;
+}
+
+.skeleton-text-2 {
+  width: 95px;
+  height: 20px;
+}
+
+.skeleton-buttons {
+  width: 30px;
+  height: 30px;
+}
+
+.skeleton-buttons-2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}

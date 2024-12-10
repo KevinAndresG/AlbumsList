@@ -1,0 +1,31 @@
+<div class="card">
+  <img
+    class="album-cover"
+    [src]="album()?.cover ?? '/no-album-cover.jpg'"
+    (error)="handleImageError($event)"
+    alt="Album Cover"
+  />
+  <div class="card-content">
+    <h2 class="album-name">{{ album()?.name }}</h2>
+    <p class="album-release-date">Lanzamiento: {{ album()?.releaseDate }}</p>
+    <p class="album-description">{{ album()?.description }}</p>
+    <div class="album-info">
+      <span class="album-genre">Género: {{ album()?.genre }}</span>
+      <span class="album-label">Disquera: {{ album()?.recordLabel }}</span>
+    </div>
+    <div class="card-actions">
+      <button class="action-button">
+        <img src="/eye.png" width="15" alt="" />
+      </button>
+      <button class="action-button">
+        <img src="/comment.png" width="15" alt="" />
+      </button>
+    </div>
+    <button
+      class="action-button edit-button"
+      routerLink="/edit-album/{{ album()?.id }}"
+    >
+      <img src="/edit.svg" width="15" alt="" />
+    </button>
+  </div>
+</div>

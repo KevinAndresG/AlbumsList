@@ -1,0 +1,109 @@
+<div class="form-container">
+  <form [formGroup]="albumForm" class="album-form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        id="name"
+        formControlName="name"
+        type="text"
+        placeholder="Ingrese el nombre del álbum"
+      />
+      @if ( albumForm.get('name')?.invalid && albumForm.get('name')?.touched) {
+      <div class="error">
+        @if (albumForm.get('name')?.hasError('required')) {
+        <p>El nombre es obligatorio.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="cover">URL de la cubierta:</label>
+      <input
+        id="cover"
+        formControlName="cover"
+        type="url"
+        placeholder="Ingrese la URL de la cubierta"
+      />
+      @if (albumForm.get('cover')?.invalid && albumForm.get('cover')?.touched) {
+      <div class="error">
+        @if (albumForm.get('cover')?.hasError('required')) {
+        <p>La URL de la cubierta es obligatoria.</p>
+        } @if (albumForm.get('cover')?.hasError('pattern')) {
+        <p>La URL de la cubierta es inválida.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="releaseDate">Fecha de lanzamiento:</label>
+      <input id="releaseDate" formControlName="releaseDate" type="date" />
+      @if (albumForm.get('releaseDate')?.invalid &&
+      albumForm.get('releaseDate')?.touched) {
+      <div class="error">
+        @if (albumForm.get('releaseDate')?.hasError('required')) {
+        <p>La fecha de lanzamiento es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Ingrese la descripción del álbum"
+      ></textarea>
+      @if (albumForm.get('description')?.invalid &&
+      albumForm.get('description')?.touched) {
+      <div class="error">
+        @if (albumForm.get('description')?.hasError('required')) {
+        <p>La descripción es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Género:</label>
+      <select id="genre" formControlName="genre">
+        <option value="" disabled selected>Seleccione un género</option>
+        <option value="Classical">Clásico</option>
+        <option value="Salsa">Salsa</option>
+        <option value="Rock">Rock</option>
+        <option value="Folk">Folk</option>
+      </select>
+      @if (albumForm.get('genre')?.invalid && albumForm.get('genre')?.touched) {
+      <div class="error">
+        @if (albumForm.get('genre')?.hasError('required')) {
+        <p>El género es obligatorio.</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="label">Disquera:</label>
+      <select id="label" formControlName="recordLabel">
+        <option value="" disabled selected>Seleccione una disquera</option>
+        <option value="Sony Music">Sony Music</option>
+        <option value="Discos Fuentes">Discos Fuentes</option>
+        <option value="Elektra">Elektra</option>
+        <option value="Fania Records">Fania Records</option>
+      </select>
+      @if (albumForm.get('recordLabel')?.invalid &&
+      albumForm.get('recordLabel')?.touched) {
+      <div class="error">
+        @if (albumForm.get('recordLabel')?.hasError('required')) {
+        <p>La disquera es obligatoria.</p>
+        }
+      </div>
+      }
+    </div>
+    <button type="submit" class="submit-button" [disabled]="albumForm.invalid">
+      {{ isEditing() ? "Editar Album" : "Crear Album" }}
+    </button>
+  </form>
+</div>

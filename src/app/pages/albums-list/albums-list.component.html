@@ -1,0 +1,31 @@
+<button id="create-album-button" routerLink="/create-album">Crear Album</button>
+<div id="albums-container">
+  @if (this.isLoading) { @for(skel of skeletons; track $index) {
+  <div class="card-skeleton">
+    <div class="skeleton skeleton-image"></div>
+    <div class="card-content">
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-release"></div>
+      <div class="skeleton skeleton-description"></div>
+      <div class="album-info">
+        <div class="skeleton skeleton-text-2"></div>
+        <div class="skeleton skeleton-text-2"></div>
+      </div>
+      <div class="card-actions">
+        <div class="skeleton skeleton-buttons"></div>
+        <div class="skeleton skeleton-buttons"></div>
+      </div>
+      <div class="skeleton skeleton-buttons-2"></div>
+    </div>
+  </div>
+  } } @else { @for (album of paginatedAlbums; track album.id) {
+  <app-album-card [album]="album" />
+  } }
+</div>
+<nz-pagination
+  id="pagination"
+  [nzPageSize]="itemsPerPage"
+  [nzTotal]="albums.length"
+  (nzPageIndexChange)="onPageChange($event)"
+>
+</nz-pagination>
